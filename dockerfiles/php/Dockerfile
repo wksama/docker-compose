@@ -12,7 +12,7 @@ ENV DOCKER_USER_GID 20
 ENV BOOT2DOCKER_ID 1000
 ENV BOOT2DOCKER_GID 50
 
-COPY ./extensions /tmp/extensions
+COPY php/extensions /tmp/extensions
 WORKDIR /tmp/extensions
 
 ENV EXTENSIONS=",${PHP_EXTENSIONS},"

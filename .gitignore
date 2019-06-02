@@ -3,6 +3,5 @@ log/
 .idea/
 .env
 docker-compose.yml
-.env
-README.md
+README1.md
 README-en.md

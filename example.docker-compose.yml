@@ -16,7 +16,8 @@ services:
 
   php72:
     build:
-      context: .
+      context: ./dockerfiles
+      dockerfile: php/Dockerfile
       args:
         PHP_VERSION: ${PHP72_VERSION}
         ALPINE_REPOSITORIES: ${ALPINE_REPOSITORIES}
@@ -34,8 +35,9 @@ services:
       - default
 
   php56:
-    build:
-      context: .
+    build: ./dockerfiles/php/
+      context: ./dockerfiles
+      dockerfile: php/Dockerfile
       args:
         PHP_VERSION: ${PHP56_VERSION}
         ALPINE_REPOSITORIES: ${ALPINE_REPOSITORIES}
