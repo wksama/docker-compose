@@ -1,0 +1,8 @@
+data/
+log/
+.idea/
+.env
+docker-compose.yml
+.env
+README.md
+README-en.md
