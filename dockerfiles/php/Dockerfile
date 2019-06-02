@@ -39,7 +39,6 @@ RUN wget -O /tmp/phpmyadmin.tar.gz https://files.phpmyadmin.net/phpMyAdmin/${PHP
 RUN tar xfvz /tmp/phpmyadmin.tar.gz -C /var/www
 RUN ln -s /var/www/phpMyAdmin-${PHPMYADMIN_VERSION}-all-languages /var/www/phpmyadmin
 RUN mv /var/www/phpmyadmin/config.sample.inc.php /var/www/phpmyadmin/config.inc.php
-RUN echo "\$cfg['AllowArbitraryServer'] = true;" >> /var/www/phpmyadmin/config.inc.php
 
 # Add composer
 RUN wget https://dl.laravel-china.org/composer.phar -O /usr/local/bin/composer \
