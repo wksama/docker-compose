@@ -4,8 +4,8 @@ FROM php:${PHP_VERSION}-fpm-alpine
 ARG PHP_EXTENSIONS
 ARG MORE_EXTENSION_INSTALLER
 ARG ALPINE_REPOSITORIES
+ARG PHPMYADMIN_VERSION
 
-ENV PHPMYADMIN_VERSION=4.8.5
 ENV DOCKER_USER_ID 501
 ENV DOCKER_USER_GID 20
 
@@ -22,8 +22,7 @@ RUN export MC="-j$(nproc)" \
     && chmod +x install.sh \
     && chmod +x "${MORE_EXTENSION_INSTALLER}" \
     && sh install.sh \
-    && sh "${MORE_EXTENSION_INSTALLER}" \
-    && rm -rf /tmp/extensions
+    && sh "${MORE_EXTENSION_INSTALLER}"
 
 # Tweaks to give Apache/PHP write permissions to the app
 RUN apk --no-cache add shadow
@@ -33,12 +32,6 @@ RUN usermod -u ${BOOT2DOCKER_ID} www-data && \
 
 RUN groupmod -g $(($BOOT2DOCKER_GID + 10000)) $(getent group $BOOT2DOCKER_GID | cut -d: -f1)
 RUN groupmod -g ${BOOT2DOCKER_GID} staff
-
-# Add phpmyadmin
-RUN wget -O /tmp/phpmyadmin.tar.gz https://files.phpmyadmin.net/phpMyAdmin/${PHPMYADMIN_VERSION}/phpMyAdmin-${PHPMYADMIN_VERSION}-all-languages.tar.gz
-RUN tar xfvz /tmp/phpmyadmin.tar.gz -C /var/www
-RUN ln -s /var/www/phpMyAdmin-${PHPMYADMIN_VERSION}-all-languages /var/www/phpmyadmin
-RUN mv /var/www/phpmyadmin/config.sample.inc.php /var/www/phpmyadmin/config.inc.php
 
 # Add composer
 RUN wget https://dl.laravel-china.org/composer.phar -O /usr/local/bin/composer \

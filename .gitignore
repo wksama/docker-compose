@@ -5,3 +5,4 @@ log/
 docker-compose.yml
 README1.md
 README-en.md
+*.sh
