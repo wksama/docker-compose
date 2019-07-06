@@ -39,9 +39,9 @@ RUN wget https://dl.laravel-china.org/composer.phar -O /usr/local/bin/composer \
 
 # change composer image sources
 USER 1000
-RUN composer config -g repo.packagist composer https://packagist.laravel-china.org
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 USER root
-RUN composer config -g repo.packagist composer https://packagist.laravel-china.org
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 # Configure /app folder with sample app
 RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html

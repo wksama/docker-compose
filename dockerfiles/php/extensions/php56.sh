@@ -18,12 +18,25 @@ if [ -z "${EXTENSIONS##*,mcrypt,*}" ]; then
 fi
 
 
+if [ -z "${EXTENSIONS##*,mysql,*}" ]; then
+    echo "---------- Install mysql ----------"
+    docker-php-ext-install ${MC} mysql
+fi
+
+
 if [ -z "${EXTENSIONS##*,sodium,*}" ]; then
     echo "---------- Install sodium ----------"
     apk add --no-cache libsodium-dev
 	docker-php-ext-install ${MC} sodium
 fi
 
+if [ -z "${EXTENSIONS##*,amqp,*}" ]; then
+    echo "---------- Install amqp ----------"
+    apk add --no-cache rabbitmq-c-dev
+    cd /tmp/extensions
+    pecl install amqp-1.9.4.tgz
+    docker-php-ext-enable amqp
+fi
 
 if [ -z "${EXTENSIONS##*,redis,*}" ]; then
     echo "---------- Install redis ----------"

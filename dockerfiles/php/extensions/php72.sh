@@ -16,11 +16,23 @@ if [ -z "${EXTENSIONS##*,mcrypt,*}" ]; then
 fi
 
 
+if [ -z "${EXTENSIONS##*,mysql,*}" ]; then
+    echo "---------- mysql was REMOVED from PHP 7.0.0 ----------"
+fi
+
+
 if [ -z "${EXTENSIONS##*,sodium,*}" ]; then
     echo "---------- Install sodium ----------"
     echo "Sodium is bundled with PHP from PHP 7.2.0 "
 fi
 
+if [ -z "${EXTENSIONS##*,amqp,*}" ]; then
+    echo "---------- Install amqp ----------"
+    apk add --no-cache rabbitmq-c-dev
+    cd /tmp/extensions
+    pecl install amqp-1.9.4.tgz
+    docker-php-ext-enable amqp
+fi
 
 if [ -z "${EXTENSIONS##*,redis,*}" ]; then
     echo "---------- Install redis ----------"
