@@ -34,8 +34,7 @@ RUN groupmod -g $(($BOOT2DOCKER_GID + 10000)) $(getent group $BOOT2DOCKER_GID | 
 RUN groupmod -g ${BOOT2DOCKER_GID} staff
 
 # Add composer
-RUN wget https://dl.laravel-china.org/composer.phar -O /usr/local/bin/composer \
-    && chmod a+x /usr/local/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # change composer image sources
 USER 1000
