@@ -31,7 +31,7 @@ services:
       - ${PHP72_FPM_CONF_DIR}:/usr/local/etc/php-fpm.d/:rw
       - ${PHP72_FPM_CONF_FILE}:/usr/local/etc/php-fpm.conf:rw
       - ${PHPMYADMIN_CONF_FILE}:/var/www/phpmyadmin/config.inc.php:ro
-      - ${PHP72_LOG_DIR}:/var/log/php/
+      - ${PHP72_LOG_DIR}:/var/log/php/:rw
     environment:
       XDEBUG_CONFIG: remote_host=${XDEBUG_REMOTE_HOST}
     restart: always
@@ -57,7 +57,7 @@ services:
       - ${PHP56_FPM_CONF_DIR}:/usr/local/etc/php-fpm.d/:rw
       - ${PHP56_FPM_CONF_FILE}:/usr/local/etc/php-fpm.conf:rw
       - ${PHPMYADMIN_CONF_FILE}:/var/www/phpmyadmin/config.inc.php:ro
-      - ${PHP56_LOG_DIR}:/var/log/php/
+      - ${PHP56_LOG_DIR}:/var/log/php/:rw
     environment:
       XDEBUG_CONFIG: remote_host=${XDEBUG_REMOTE_HOST}
     restart: always
