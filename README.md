@@ -1,5 +1,5 @@
 <details>
-<summary>展开查看</summary>
+<summary>目录结构</summary>
 <pre><code>
 .
 ├── config                                  #配置文件目录
@@ -22,3 +22,29 @@
 └── www                                     #代码存放目录
 </code></pre>
 </details>
+
+### 使用
+
+1. 安装docker
+```
+```
+
+2. 克隆项目
+
+```
+$ git clone git@github.com:WencoChen/dnmp.git
+```
+
+3. 个性化配置
+
+```
+$ cd dnmp
+$ cp docker-compose.yml.example docker-compose.yml
+$ cp env.example .env
+```
+
+4. 运行
+
+```
+$ docker-compose up -d
+```
