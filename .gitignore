@@ -1,7 +1,5 @@
 data/
-log/nginx
-log/php/*
-!log/php/.gitkeep
+*.log
 .idea/
 .env
 docker-compose.yml
