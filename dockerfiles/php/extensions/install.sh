@@ -266,11 +266,3 @@ if [ -z "${EXTENSIONS##*,yaf,*}" ]; then
     printf "\n" | pecl install yaf
     docker-php-ext-enable yaf
 fi
-
-if [ "${PHPMYADMIN_VERSION}" != "" ]; then \
-    echo "---------- Install phpmyadmin ----------"
-    wget -O /tmp/phpmyadmin.tar.gz https://files.phpmyadmin.net/phpMyAdmin/${PHPMYADMIN_VERSION}/phpMyAdmin-${PHPMYADMIN_VERSION}-all-languages.tar.gz
-    tar xfvz /tmp/phpmyadmin.tar.gz -C /var/www
-    ln -s /var/www/phpMyAdmin-${PHPMYADMIN_VERSION}-all-languages /var/www/phpmyadmin
-    mv /var/www/phpmyadmin/config.sample.inc.php /var/www/phpmyadmin/config.inc.php
-fi
