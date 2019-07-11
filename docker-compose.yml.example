@@ -23,14 +23,12 @@ services:
         ALPINE_REPOSITORIES: ${ALPINE_REPOSITORIES}
         PHP_EXTENSIONS: ${PHP72_EXTENSIONS}
         MORE_EXTENSION_INSTALLER: php72.sh
-        PHPMYADMIN_VERSION: ${PHPMYADMIN_VERSION}
     container_name: "php72"
     volumes:
       - ${SOURCE_DIR}:/var/www/html/:rw
       - ${PHP72_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:rw
       - ${PHP72_FPM_CONF_DIR}:/usr/local/etc/php-fpm.d/:rw
       - ${PHP72_FPM_CONF_FILE}:/usr/local/etc/php-fpm.conf:rw
-      - ${PHPMYADMIN_CONF_FILE}:/var/www/phpmyadmin/config.inc.php:ro
       - ${PHP72_LOG_DIR}:/var/log/php/:rw
     environment:
       XDEBUG_CONFIG: remote_host=${XDEBUG_REMOTE_HOST}
@@ -49,14 +47,12 @@ services:
         ALPINE_REPOSITORIES: ${ALPINE_REPOSITORIES}
         PHP_EXTENSIONS: ${PHP72_EXTENSIONS}
         MORE_EXTENSION_INSTALLER: php72.sh
-        PHPMYADMIN_VERSION: ${PHPMYADMIN_VERSION}
     container_name: "php56"
     volumes:
       - ${SOURCE_DIR}:/var/www/html/:rw
       - ${PHP56_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:rw
       - ${PHP56_FPM_CONF_DIR}:/usr/local/etc/php-fpm.d/:rw
       - ${PHP56_FPM_CONF_FILE}:/usr/local/etc/php-fpm.conf:rw
-      - ${PHPMYADMIN_CONF_FILE}:/var/www/phpmyadmin/config.inc.php:ro
       - ${PHP56_LOG_DIR}:/var/log/php/:rw
     environment:
       XDEBUG_CONFIG: remote_host=${XDEBUG_REMOTE_HOST}
