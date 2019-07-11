@@ -7,7 +7,6 @@
 │   ├── nginx                               #nginx配置文件
 │   ├── php56                               #php56配置文件
 │   ├── php72                               #php72配置文件
-│   ├── phpmyadmin                          #phpadmin配置文件
 │   └── redis                               #redis配置文件
 ├── data                                    #数据存放目录
 │   ├── mysql                               #mysql数据存放目录
