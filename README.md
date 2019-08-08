@@ -25,8 +25,8 @@
 ### 使用
 
 1. 安装docker
-```
-```
+
+[Docker Documentation](https://docs.docker.com/install/)
 
 2. 克隆项目
 
@@ -40,6 +40,7 @@ $ git clone git@github.com:WencoChen/dnmp.git
 $ cd dnmp
 $ cp docker-compose.yml.example docker-compose.yml
 $ cp env.example .env
+$ cp config/nginx/conf.d/localhost.conf.example config/nginx/conf.d/localhost.conf
 ```
 
 4. 运行

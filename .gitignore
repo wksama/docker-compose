@@ -3,6 +3,7 @@ data/
 .idea/
 .env
 docker-compose.yml
-README1.md
-README-en.md
-*.sh
+config/nginx/certs/*
+config/nginx/conf.d/*
+!config/nginx/conf.d/localhost.conf.example
+!config/nginx/conf.d/https_localhost.conf.example

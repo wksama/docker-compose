@@ -4,6 +4,7 @@ FROM php:${PHP_VERSION}-fpm-alpine
 ARG PHP_EXTENSIONS
 ARG MORE_EXTENSION_INSTALLER
 ARG ALPINE_REPOSITORIES
+ARG COMPOSER_REPOSITORIES
 
 ENV BOOT2DOCKER_ID 1000
 ENV BOOT2DOCKER_GID 50
@@ -33,9 +34,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # change composer image sources
 USER 1000
-RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+RUN composer config -g repo.packagist composer ${COMPOSER_REPOSITORIES}
 USER root
-RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+RUN composer config -g repo.packagist composer ${COMPOSER_REPOSITORIES}
 
 WORKDIR /var/www/html
 
