@@ -2,10 +2,10 @@ version: "3"
 services:
   nginx:
     image: nginx:${NGINX_VERSION}
-    container_name: "nginx"
+    container_name: nginx
     ports:
-      - "${NGINX_HTTP_HOST_PORT}:80"
-      - "${NGINX_HTTPS_HOST_PORT}:443"
+      - ${NGINX_HTTP_HOST_PORT}:80
+      - ${NGINX_HTTPS_HOST_PORT}:443
     volumes:
       - ${SOURCE_DIR}:/var/www/html/:rw
       - ${NGINX_CONF_DIR}:/etc/nginx/:rw
@@ -24,7 +24,7 @@ services:
         COMPOSER_REPOSITORIES: ${COMPOSER_REPOSITORIES}
         PHP_EXTENSIONS: ${PHP72_EXTENSIONS}
         MORE_EXTENSION_INSTALLER: php72.sh
-    container_name: "php72"
+    container_name: php72
     volumes:
       - ${SOURCE_DIR}:/var/www/html/:rw
       - ${PHP72_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:rw
@@ -49,7 +49,7 @@ services:
         COMPOSER_REPOSITORIES: ${COMPOSER_REPOSITORIES}
         PHP_EXTENSIONS: ${PHP72_EXTENSIONS}
         MORE_EXTENSION_INSTALLER: php72.sh
-    container_name: "php56"
+    container_name: php56
     volumes:
       - ${SOURCE_DIR}:/var/www/html/:rw
       - ${PHP56_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:rw
@@ -66,9 +66,9 @@ services:
 
   mysql:
     image: mysql:${MYSQL_VERSION}
-    container_name: "mysql"
+    container_name: mysql
     ports:
-      - "${MYSQL_HOST_PORT}:3306"
+      - ${MYSQL_HOST_PORT}:3306
     volumes:
       - ${MYSQL_CONF_DIR}:/etc/mysql/:ro
       - ${MYSQL_DATA_DIR}:/var/lib/mysql/:rw
@@ -76,18 +76,31 @@ services:
     networks:
       - default
     environment:
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
   redis:
     image: redis:${REDIS_VERSION}
-    container_name: "redis"
+    container_name: redis
     ports:
-      - "${REDIS_HOST_PORT}:6379"
+      - ${REDIS_HOST_PORT}:6379
     volumes:
       - ${REDIS_CONF_FILE}:/etc/redis.conf:ro
       - ${REDIS_DATA_DIR}:/data/:rw
     restart: always
     entrypoint: ["redis-server", "/etc/redis.conf"]
+    networks:
+      - default
+
+  node:
+    image: node:8-alpine
+    container_name: node
+    ports:
+      - 8080:8080
+    volumes:
+      - ${SOURCE_DIR}:/home/node:rw
+    tty: true
+    working_dir: /home/node
+    restart: always
     networks:
       - default
 
