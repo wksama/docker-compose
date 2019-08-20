@@ -32,7 +32,7 @@ services:
       - ${PHP72_FPM_CONF_FILE}:/usr/local/etc/php-fpm.conf:rw
       - ${PHP72_LOG_DIR}:/var/log/php/:rw
     environment:
-      XDEBUG_CONFIG: remote_host=${XDEBUG_REMOTE_HOST}
+      XDEBUG_CONFIG: "remote_enable=${XDEBUG_REMOTE_ENABLE} remote_host=${XDEBUG_REMOTE_HOST} remote_port=${XDEBUG_REMOTE_PORT} remote_autostart=${XDEBUG_REMOTE_AUTOSTART}"
     restart: always
     cap_add:
       - SYS_PTRACE
@@ -57,7 +57,7 @@ services:
       - ${PHP56_FPM_CONF_FILE}:/usr/local/etc/php-fpm.conf:rw
       - ${PHP56_LOG_DIR}:/var/log/php/:rw
     environment:
-      XDEBUG_CONFIG: remote_host=${XDEBUG_REMOTE_HOST}
+      XDEBUG_CONFIG: "remote_enable=${XDEBUG_REMOTE_ENABLE} remote_host=${XDEBUG_REMOTE_HOST} remote_port=${XDEBUG_REMOTE_PORT} remote_autostart=${XDEBUG_REMOTE_AUTOSTART}"
     restart: always
     cap_add:
       - SYS_PTRACE
