@@ -33,11 +33,10 @@ RUN groupmod -g ${BOOT2DOCKER_GID} staff
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # change composer image sources
-USER 1000
-RUN composer config -g repo.packagist composer ${COMPOSER_REPOSITORIES}
-USER root
+USER www-data
 RUN composer config -g repo.packagist composer ${COMPOSER_REPOSITORIES}
 
+USER root
 WORKDIR /var/www/html
 
 RUN rm -rf /tmp/*
